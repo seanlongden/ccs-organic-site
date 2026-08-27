@@ -3,11 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Closing Clients System — Organic Offer Mockup</title>
+<title>Closing Clients System — Organic Offer</title>
+<link rel="icon" type="image/png" href="/icon.png">
+<link rel="apple-touch-icon" href="/icon.png">
 <style>
   :root {
     --accent: #7D83FF;
     --accent-dark: #5A61E8;
+    --navy: #0D1F35;
     --ink: #0B0F1A;
     --ink-2: #2A2F3D;
     --grey-1: #F5F6FA;
@@ -32,30 +35,27 @@
 
   /* Nav */
   nav.top {
-    padding: 20px 0;
+    padding: 16px 0;
     border-bottom: 1px solid var(--grey-2);
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(8px);
+    position: sticky; top: 0; z-index: 50;
   }
   nav.top .row {
     display: flex; align-items: center; justify-content: space-between;
+    gap: 16px;
   }
-  .logo {
-    font-weight: 800; font-size: 18px; letter-spacing: -0.01em;
-    display: flex; align-items: center; gap: 10px;
-  }
-  .logo-mark {
-    width: 32px; height: 32px; border-radius: 8px;
-    background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
-    display: inline-block;
-  }
+  .nav-logo { height: 48px; width: auto; display: block; }
   .trustpilot {
     display: flex; align-items: center; gap: 8px;
     font-size: 13px; color: var(--ink-2);
     text-decoration: none;
+    flex-shrink: 0;
   }
-  .trustpilot .stars { color: #00b67a; font-weight: 700; }
+  .trustpilot .stars { color: #00b67a; font-weight: 700; letter-spacing: -1px; }
 
   /* Hero */
-  section.hero { padding: 72px 0 40px; text-align: center; }
+  section.hero { padding: 64px 0 32px; text-align: center; }
   .eyebrow {
     display: inline-block;
     padding: 6px 14px;
@@ -78,7 +78,7 @@
     max-width: 720px; margin: 0 auto 32px;
   }
 
-  /* CTA button */
+  /* CTA */
   .cta-btn {
     display: inline-block;
     background: var(--ink);
@@ -90,6 +90,7 @@
     text-decoration: none;
     transition: transform 0.15s, background 0.15s;
     border: 0; cursor: pointer;
+    text-align: center;
   }
   .cta-btn:hover { background: var(--accent-dark); transform: translateY(-1px); }
   .cta-btn.large { padding: 20px 36px; font-size: 17px; }
@@ -98,11 +99,10 @@
     margin-top: 12px;
     font-size: 13px; color: var(--grey-3);
   }
+  .cta-row { text-align: center; padding: 20px 0; }
 
   /* VSL slot */
-  .vsl-wrap {
-    max-width: 900px; margin: 40px auto;
-  }
+  .vsl-wrap { max-width: 900px; margin: 40px auto; padding: 0 24px; }
   .vsl-box {
     position: relative;
     padding-bottom: 56.25%;
@@ -126,6 +126,37 @@
   }
   .vsl-placeholder .label { opacity: 0.6; font-size: 14px; margin-top: 8px; }
   .vsl-placeholder .duration { position: absolute; bottom: 16px; right: 16px; background: rgba(0,0,0,0.6); padding: 4px 10px; border-radius: 4px; font-size: 12px; }
+
+  /* Trusted by (logo strip on navy) */
+  section.logos-section {
+    background: var(--navy);
+    padding: 64px 0;
+  }
+  .logos-heading {
+    color: rgba(255,255,255,0.55);
+    font-size: 13px; text-transform: uppercase; letter-spacing: 2px;
+    text-align: center; margin-bottom: 40px; font-weight: 600;
+  }
+  .logos-grid {
+    display: flex; justify-content: center; align-items: center;
+    gap: 12px; flex-wrap: wrap;
+    max-width: 1100px; margin: 0 auto; padding: 0 24px;
+  }
+  .logo-cell {
+    background: white;
+    border-radius: 10px;
+    padding: 14px 18px;
+    height: 70px; min-width: 130px;
+    display: flex; align-items: center; justify-content: center;
+    transition: transform 0.2s;
+  }
+  .logo-cell:hover { transform: translateY(-2px); }
+  .logo-mark {
+    height: 34px; width: auto;
+    max-width: 130px; object-fit: contain;
+  }
+  .logo-mark-currentcolor { color: var(--navy); }
+  .logo-mark-fliptodark { filter: invert(1); }
 
   /* Section spacing */
   section { padding: 72px 0; }
@@ -171,32 +202,26 @@
     font-size: 20px; font-weight: 700; letter-spacing: -0.01em;
     margin-bottom: 12px;
   }
-  .move-card p {
-    color: var(--ink-2); font-size: 15px; line-height: 1.6;
-  }
+  .move-card p { color: var(--ink-2); font-size: 15px; line-height: 1.6; }
   .move-card p strong { color: var(--ink); }
 
-  /* Deliverables — the automations grid */
+  /* Deliverables */
   section.deliverables { background: var(--grey-1); }
-  .cluster {
-    max-width: 1080px; margin: 0 auto;
-  }
+  .cluster { max-width: 1080px; margin: 0 auto; }
   .cluster + .cluster { margin-top: 40px; }
   .cluster-head {
-    display: flex; align-items: baseline; gap: 12px;
+    display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap;
     margin-bottom: 20px;
     border-bottom: 1px solid var(--grey-2);
     padding-bottom: 16px;
   }
-  .cluster-head h3 {
-    font-size: 22px; font-weight: 800; letter-spacing: -0.01em;
-  }
+  .cluster-head h3 { font-size: 22px; font-weight: 800; letter-spacing: -0.01em; }
   .cluster-hours {
     color: var(--accent);
     font-size: 14px; font-weight: 700;
     background: rgba(125,131,255,0.1);
-    padding: 4px 10px;
-    border-radius: 6px;
+    padding: 4px 10px; border-radius: 6px;
+    white-space: nowrap;
   }
   .deliverable-grid {
     display: grid; grid-template-columns: repeat(2, 1fr);
@@ -209,23 +234,19 @@
     padding: 20px 22px;
   }
   .deliverable h4 {
-    font-size: 15px; font-weight: 700;
-    color: var(--ink);
+    font-size: 15px; font-weight: 700; color: var(--ink);
     margin-bottom: 6px;
     display: flex; align-items: center; gap: 8px;
   }
   .deliverable h4::before {
-    content: "";
-    display: inline-block; width: 6px; height: 6px;
+    content: ""; display: inline-block; width: 6px; height: 6px;
     background: var(--accent); border-radius: 50%;
+    flex-shrink: 0;
   }
-  .deliverable p {
-    color: var(--ink-2); font-size: 14px;
-  }
+  .deliverable p { color: var(--ink-2); font-size: 14px; }
   .deliverable .replaces {
     display: block; margin-top: 8px;
-    font-size: 12px; color: var(--grey-3);
-    font-style: italic;
+    font-size: 12px; color: var(--grey-3); font-style: italic;
   }
 
   /* Testimonials */
@@ -234,12 +255,8 @@
     gap: 16px;
     max-width: 1080px; margin: 0 auto;
   }
-  .testimonial-grid > :first-child, .testimonial-grid > :nth-child(2) {
-    grid-column: span 1;
-  }
   .video-thumb {
-    position: relative;
-    padding-bottom: 56.25%;
+    position: relative; padding-bottom: 56.25%;
     background: linear-gradient(135deg, #1a1e2e 0%, #0B0F1A 100%);
     border-radius: 10px; overflow: hidden;
   }
@@ -276,19 +293,17 @@
 
   /* FAQ */
   .faq { max-width: 780px; margin: 0 auto; }
-  .faq-item {
-    border-bottom: 1px solid var(--grey-2);
-  }
+  .faq-item { border-bottom: 1px solid var(--grey-2); }
   .faq-item summary {
     padding: 22px 0; font-size: 17px; font-weight: 700;
     cursor: pointer; list-style: none;
     display: flex; justify-content: space-between; align-items: center;
-    color: var(--ink);
+    color: var(--ink); gap: 16px;
   }
+  .faq-item summary::-webkit-details-marker { display: none; }
   .faq-item summary::after {
-    content: "+";
-    font-size: 22px; color: var(--grey-3);
-    transition: transform 0.2s;
+    content: "+"; font-size: 22px; color: var(--grey-3);
+    transition: transform 0.2s; flex-shrink: 0;
   }
   .faq-item[open] summary::after { content: "−"; }
   .faq-item .faq-body {
@@ -306,18 +321,59 @@
     border-top: 1px solid var(--grey-2);
   }
 
-  /* Mid-page CTA rows */
-  .cta-row { text-align: center; padding: 20px 0; }
-
-  /* Responsive */
+  /* ─── Responsive: tablet (< 900px) ─────────────────────────── */
   @media (max-width: 900px) {
-    h1 { font-size: 34px; }
-    h2 { font-size: 27px; }
-    section { padding: 48px 0; }
-    .three-moves { grid-template-columns: 1fr; }
-    .deliverable-grid { grid-template-columns: 1fr; }
+    section { padding: 56px 0; }
+    section.hero { padding: 48px 0 24px; }
+    h1 { font-size: 38px; }
+    h2 { font-size: 28px; }
+    .subhead { font-size: 17px; }
+    .three-moves, .deliverable-grid { grid-template-columns: 1fr; }
     .testimonial-grid { grid-template-columns: repeat(2, 1fr); }
     .wins-grid { grid-template-columns: repeat(3, 1fr); }
+    .vsl-wrap { padding: 0 16px; }
+  }
+
+  /* ─── Responsive: phone (< 600px) ──────────────────────────── */
+  @media (max-width: 600px) {
+    .container { padding: 0 18px; }
+    nav.top { padding: 12px 0; }
+    .nav-logo { height: 40px; }
+    .trustpilot { font-size: 12px; }
+    .trustpilot .stars { font-size: 14px; }
+    section { padding: 44px 0; }
+    section.hero { padding: 36px 0 20px; }
+    h1 { font-size: 30px; line-height: 1.12; margin-bottom: 16px; }
+    h2 { font-size: 24px; }
+    .eyebrow { font-size: 12px; padding: 5px 12px; margin-bottom: 20px; }
+    .subhead { font-size: 16px; margin-bottom: 24px; }
+    .cta-btn { padding: 14px 22px; font-size: 15px; width: 100%; max-width: 340px; }
+    .cta-btn.large { padding: 16px 26px; font-size: 16px; }
+    .move-card { padding: 26px 22px; }
+    .cluster-head { flex-direction: column; align-items: flex-start; gap: 6px; }
+    .cluster-hours { font-size: 12px; }
+    .deliverable { padding: 18px 18px; }
+    .testimonial-grid, .wins-grid { grid-template-columns: repeat(2, 1fr); }
+    .logos-grid { gap: 8px; padding: 0 16px; }
+    .logo-cell { min-width: 110px; height: 60px; padding: 10px 14px; }
+    .logo-mark { height: 28px; max-width: 100px; }
+    .logos-heading { font-size: 11px; letter-spacing: 1.5px; margin-bottom: 28px; padding: 0 20px; }
+    section.logos-section { padding: 48px 0; }
+    .faq-item summary { font-size: 16px; padding: 18px 0; }
+  }
+
+  /* ─── Responsive: small phone (< 420px) ────────────────────── */
+  @media (max-width: 420px) {
+    .container { padding: 0 14px; }
+    h1 { font-size: 26px; }
+    h2 { font-size: 22px; }
+    .subhead { font-size: 15px; }
+    .move-card { padding: 22px 18px; }
+    .move-card h3 { font-size: 18px; }
+    .wins-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .testimonial-grid { grid-template-columns: 1fr; }
+    .logo-cell { min-width: 100px; height: 54px; }
+    .logo-mark { height: 24px; max-width: 88px; }
   }
 </style>
 </head>
@@ -327,10 +383,9 @@
 <nav class="top">
   <div class="container">
     <div class="row">
-      <div class="logo">
-        <span class="logo-mark"></span>
-        <span>Closing Clients System</span>
-      </div>
+      <a href="/" style="display:block;">
+        <img src="/logo.png" alt="Closing Clients System" class="nav-logo">
+      </a>
       <a href="https://uk.trustpilot.com/review/closingclientsgroup.com" class="trustpilot" target="_blank" rel="noopener">
         <span class="stars">★★★★★</span>
         <span>4.9 on Trustpilot</span>
@@ -344,11 +399,11 @@
   <div class="container">
     <span class="eyebrow">For lead-gen agency owners running cold email</span>
     <h1>Take Fulfilment Off Your Plate. Reposition Into <span class="highlight">$8–15k Deals.</span><br>Guaranteed $50k In New Revenue Or You Don't Pay.</h1>
-    <p class="subhead">You're doing 6-10 sales calls a day for $400-per-meeting clients. Cold email got easy for anyone. The real skill now is picking niches where deals actually close and pricing at $8-15k upfront — and you can't fix that while you're the one running fulfilment.</p>
+    <p class="subhead">You're doing 6–10 sales calls a day for $400-per-meeting clients. Cold email got easy for anyone. The real skill now is picking niches where deals actually close and pricing at $8-15k upfront — and you can't fix that while you're the one running fulfilment.</p>
   </div>
 
   <!-- VSL slot -->
-  <div class="vsl-wrap container">
+  <div class="vsl-wrap">
     <div class="vsl-box">
       <div class="vsl-placeholder">
         <div class="play">▶</div>
@@ -362,6 +417,29 @@
   <div class="cta-row">
     <a href="https://calendly.com/seanlongden/closing-clients-system-call" class="cta-btn large">Apply To Get The Closing Clients System Installed</a>
     <span class="cta-note">Application → qualification → call with Sean.</span>
+  </div>
+</section>
+
+<!-- Trusted by logo strip -->
+<section class="logos-section">
+  <div class="logos-heading">Trusted by 1,500+ B2B companies</div>
+  <div class="logos-grid">
+    <div class="logo-cell"><img src="/logos/instantly.svg" alt="Instantly" class="logo-mark"></div>
+    <div class="logo-cell"><img src="/logos/whitelabel.svg" alt="White Label Loyalty" class="logo-mark logo-mark-currentcolor"></div>
+    <div class="logo-cell"><img src="/logos/spotter-dark.png" alt="Spotter" class="logo-mark logo-mark-fliptodark"></div>
+    <div class="logo-cell"><img src="/logos/inhealth.png" alt="InHealth Group" class="logo-mark"></div>
+    <div class="logo-cell"><img src="/logos/upmerch.svg" alt="Upmerch" class="logo-mark"></div>
+    <div class="logo-cell"><img src="/logos/dinsmore.png" alt="Dinsmore Steele" class="logo-mark"></div>
+    <div class="logo-cell"><img src="/logos/burmatex.png" alt="Burmatex" class="logo-mark"></div>
+    <div class="logo-cell"><img src="/logos/aiark.svg" alt="AI Ark" class="logo-mark logo-mark-currentcolor"></div>
+    <div class="logo-cell"><img src="/logos/macair.png" alt="Mac Air USA" class="logo-mark logo-mark-fliptodark"></div>
+    <div class="logo-cell"><img src="/logos/cfa-dark.webp" alt="Corporate Finance Associates" class="logo-mark logo-mark-fliptodark"></div>
+    <div class="logo-cell"><img src="/logos/rapid.svg" alt="Rapid Finance" class="logo-mark logo-mark-fliptodark"></div>
+    <div class="logo-cell"><img src="/logos/harvest.jpg" alt="Harvest SBF" class="logo-mark"></div>
+    <div class="logo-cell"><img src="/logos/primus.png" alt="Primus Multifamily" class="logo-mark"></div>
+    <div class="logo-cell"><img src="/logos/joyall.jpg" alt="Joyall" class="logo-mark"></div>
+    <div class="logo-cell"><img src="/logos/bark.jpg" alt="Bark" class="logo-mark"></div>
+    <div class="logo-cell"><img src="/logos/terrier.jpg" alt="Terrier" class="logo-mark"></div>
   </div>
 </section>
 
@@ -386,7 +464,7 @@
       <div class="move-card">
         <div class="move-num">3</div>
         <h3>We guarantee the revenue</h3>
-        <p><strong>$50,000 in new revenue in 180 days minimum, or you don't pay.</strong> Not a client-count promise. A revenue floor, backed by the specific stipulations that make it defensible: 20%+ close rate on qualified calls you attend, $15k+ average client LTV, weekly optimisation calls with us. Miss the floor after you've done your part — full refund.</p>
+        <p><strong>$50,000 in new revenue in 180 days minimum, or you don't pay.</strong> Not a client-count promise. A revenue floor, backed by specific stipulations that make it defensible: 20%+ close rate on qualified calls you attend, $15k+ average client LTV, weekly optimisation calls with us. Miss the floor after you've done your part — full refund.</p>
       </div>
     </div>
 
@@ -396,14 +474,13 @@
   </div>
 </section>
 
-<!-- Deliverables — the automations grid -->
+<!-- Deliverables -->
 <section class="deliverables">
   <div class="container">
     <div class="section-eyebrow">The Automations You Get</div>
     <h2>Every hour of daily agency work — automated.</h2>
     <p class="section-sub">Every deliverable below is an AI agent we run on your behalf. Point at each one. That's a task you stop doing.</p>
 
-    <!-- Cluster A: Offer + strategy -->
     <div class="cluster">
       <div class="cluster-head">
         <h3>Offer + Strategy</h3>
@@ -413,17 +490,16 @@
         <div class="deliverable">
           <h4>Cold-traffic offer scorer</h4>
           <p>Runs your offer through 4 tests, scores 0–16. If it fails 2, we stop and rewrite before you launch a doomed campaign.</p>
-          <span class="replaces">Replaces: hiring a strategist, guessing offer-market fit, wasted campaign launches.</span>
+          <span class="replaces">Replaces: hiring a strategist, guessing offer-market fit, wasted launches.</span>
         </div>
         <div class="deliverable">
           <h4>Positioning + market-map builder</h4>
-          <p>Enumerates niches where cold traffic converts, ranks them against your capacity, and hands back a shortlist with reasoning.</p>
-          <span class="replaces">Replaces: 3-6 hours of niche research + comparison per week.</span>
+          <p>Enumerates niches where cold traffic converts, ranks against your capacity, hands back a shortlist with reasoning.</p>
+          <span class="replaces">Replaces: 3-6 hours of niche research per week.</span>
         </div>
       </div>
     </div>
 
-    <!-- Cluster B: Lead lists -->
     <div class="cluster">
       <div class="cluster-head">
         <h3>Lead Lists</h3>
@@ -432,23 +508,22 @@
       <div class="deliverable-grid">
         <div class="deliverable">
           <h4>ICP → ready-to-click search URL</h4>
-          <p>Describe your target in one sentence. Get back an AI-Ark search URL with every filter pre-set: title, industry, size, region, exclusions. 250+ title library, 12 vertical keyword libraries.</p>
+          <p>Describe your target in one sentence. Get back an AI-Ark URL with every filter pre-set. 250+ title library, 12 vertical keyword libraries.</p>
           <span class="replaces">Replaces: 2 hours of filter tuning per list build.</span>
         </div>
         <div class="deliverable">
           <h4>CSV cleaner + validator</h4>
           <p>Drops blank-email rows, renames columns to feed Lead Formatter, hands you a count summary ("976 in, 318 blank, 658 out").</p>
-          <span class="replaces">Replaces: manual Excel filtering, blank-row cleanup, column renaming.</span>
+          <span class="replaces">Replaces: manual Excel filtering per campaign.</span>
         </div>
         <div class="deliverable">
           <h4>Website enrichment scraper</h4>
           <p>Optional Jina scrape of each lead's website. Adds a full-context column ready for personalisation.</p>
-          <span class="replaces">Replaces: manual research per lead before personalisation.</span>
+          <span class="replaces">Replaces: manual research per lead.</span>
         </div>
       </div>
     </div>
 
-    <!-- Cluster C: Writing -->
     <div class="cluster">
       <div class="cluster-head">
         <h3>Writing Emails</h3>
@@ -462,23 +537,22 @@
         </div>
         <div class="deliverable">
           <h4>28 tested email frameworks</h4>
-          <p>Extracted from 210 top-performing scripts. Each with spintax, best-fit scenario, and CTA library.</p>
+          <p>Extracted from 210 top-performing scripts. Each with spintax, best-fit scenario, CTA library.</p>
           <span class="replaces">Replaces: hunting for shape from scratch every time.</span>
         </div>
         <div class="deliverable">
           <h4>Lead Formatter prompt writer</h4>
-          <p>Writes the 3 prompts you paste into Lead Formatter: qualification, company summary, personalised email. Uses your voice, your offer.</p>
+          <p>Writes the 3 prompts you paste into Lead Formatter: qualification, company summary, personalised email. Uses your voice + offer.</p>
           <span class="replaces">Replaces: hours of prompt iteration per campaign.</span>
         </div>
         <div class="deliverable">
           <h4>Firm-level bespoke personalisation</h4>
-          <p>Collapses your list from leads to companies (744 → 234), writes one custom email per company at ~$0.30 each. Includes triage, collision check, batch build.</p>
+          <p>Collapses your list from leads to companies (744 → 234), writes one custom email per company at ~$0.30 each.</p>
           <span class="replaces">Replaces: 200+ hours per campaign if done manually.</span>
         </div>
       </div>
     </div>
 
-    <!-- Cluster D: Sequencer -->
     <div class="cluster">
       <div class="cluster-head">
         <h3>Campaign Build + Deploy</h3>
@@ -487,18 +561,17 @@
       <div class="deliverable-grid">
         <div class="deliverable">
           <h4>Sequencer uploader (PlusVibe / SmartLead / Email Bison)</h4>
-          <p>Builds the campaign, handles A/B variants + spintax, pushes to your sequencer via API. Never activates the campaign — you approve, you launch.</p>
+          <p>Builds the campaign, handles A/B variants + spintax, pushes via API. Never activates the campaign — you approve, you launch.</p>
           <span class="replaces">Replaces: 2-3 hours of copy-paste per campaign upload.</span>
         </div>
         <div class="deliverable">
           <h4>Sneak-peek lead-magnet builder</h4>
-          <p>From just a client URL: full research, fit check, 2-3 lead-magnet ideas, ChatGPT image prompt, 3-email sequence — the full first-touch package.</p>
+          <p>From just a client URL: full research, fit check, 2-3 lead-magnet ideas, ChatGPT image prompt, 3-email sequence.</p>
           <span class="replaces">Replaces: manually building bespoke lead magnets per client.</span>
         </div>
       </div>
     </div>
 
-    <!-- Cluster E: Sales lane -->
     <div class="cluster">
       <div class="cluster-head">
         <h3>Sales Prep + Close</h3>
@@ -528,7 +601,6 @@
       </div>
     </div>
 
-    <!-- Cluster F: Ongoing -->
     <div class="cluster">
       <div class="cluster-head">
         <h3>Ongoing + Reposition Work</h3>
@@ -548,12 +620,12 @@
         <div class="deliverable">
           <h4>Every new AI agent we ship — free</h4>
           <p>We ship new automations monthly as the tech evolves. You get every one added to your system.</p>
-          <span class="replaces">Replaces: paying to upgrade + re-buy every 6 months.</span>
+          <span class="replaces">Replaces: paying to upgrade every 6 months.</span>
         </div>
         <div class="deliverable">
           <h4>You own every skill forever</h4>
-          <p>The Claude skills, prompts, SOPs, agreements, proposals — all yours. Not rented. Not licensed. Yours after you leave, if you leave.</p>
-          <span class="replaces">Replaces: vendor lock-in. Rented software. Fear of being cut off.</span>
+          <p>The Claude skills, prompts, SOPs, agreements, proposals — all yours. Not rented. Not licensed.</p>
+          <span class="replaces">Replaces: vendor lock-in. Rented software.</span>
         </div>
       </div>
     </div>
@@ -570,30 +642,12 @@
     <div class="section-eyebrow">Real Members</div>
     <h2>Hear from the operators running it right now.</h2>
     <div class="testimonial-grid">
-      <div class="video-thumb">
-        <div class="play-icon">▶</div>
-        <div class="name">Kevin</div>
-      </div>
-      <div class="video-thumb">
-        <div class="play-icon">▶</div>
-        <div class="name">Matt Lucero</div>
-      </div>
-      <div class="video-thumb">
-        <div class="play-icon">▶</div>
-        <div class="name">Kristian</div>
-      </div>
-      <div class="video-thumb">
-        <div class="play-icon">▶</div>
-        <div class="name">Martin</div>
-      </div>
-      <div class="video-thumb">
-        <div class="play-icon">▶</div>
-        <div class="name">Konrad</div>
-      </div>
-      <div class="video-thumb">
-        <div class="play-icon">▶</div>
-        <div class="name">+ new testimonial slot</div>
-      </div>
+      <div class="video-thumb"><div class="play-icon">▶</div><div class="name">Kevin</div></div>
+      <div class="video-thumb"><div class="play-icon">▶</div><div class="name">Matt Lucero</div></div>
+      <div class="video-thumb"><div class="play-icon">▶</div><div class="name">Kristian</div></div>
+      <div class="video-thumb"><div class="play-icon">▶</div><div class="name">Martin</div></div>
+      <div class="video-thumb"><div class="play-icon">▶</div><div class="name">Konrad</div></div>
+      <div class="video-thumb"><div class="play-icon">▶</div><div class="name">+ new</div></div>
     </div>
     <div class="cta-row" style="margin-top: 40px;">
       <a href="https://calendly.com/seanlongden/closing-clients-system-call" class="cta-btn">Book A Call Now</a>
@@ -601,14 +655,13 @@
   </div>
 </section>
 
-<!-- Client wins gallery -->
+<!-- Wins gallery -->
 <section class="wins">
   <div class="container">
     <div class="section-eyebrow">Client Wins</div>
     <h2>Screenshots from members shipping right now.</h2>
-    <p class="section-sub">Every screenshot below is a real win from a real CCS member. Curated for lead-gen agency wins — the ones that match where you're at.</p>
+    <p class="section-sub">Every screenshot below is a real win from a real CCS member. Curated for lead-gen agency wins.</p>
     <div class="wins-grid">
-      <!-- Placeholder 20 grid — real gallery pulls from Supabase like current site -->
       <div class="win-card">Screenshot 1</div>
       <div class="win-card">Screenshot 2</div>
       <div class="win-card">Screenshot 3</div>
@@ -642,7 +695,6 @@
     <div class="section-eyebrow">FAQ</div>
     <h2>Answers before you apply.</h2>
     <div class="faq">
-
       <details class="faq-item">
         <summary>What does it actually cost?</summary>
         <div class="faq-body">Discussed on the qualification call. Priced against the deal-size lift we're targeting, not by a fixed number that ignores your context. If we don't think we can 5x the investment inside 180 days, we don't take you on.</div>
@@ -650,7 +702,7 @@
 
       <details class="faq-item">
         <summary>What's included, specifically?</summary>
-        <div class="faq-body">All AI agents listed in the "Automations You Get" section above — offer scorer, list builder, cleaner, enrichment scraper, cold-email writer, 28 email frameworks, Lead Formatter prompt writer, bespoke personalisation pipeline, sequencer uploaders, pre-call brief, proposal generator, closing script, engagement agreement generator. Plus <strong>weekly coaching with Matt, direct DM access to Sean + Matt, every new agent we ship, and full ownership of every skill forever.</strong></div>
+        <div class="faq-body">All AI agents in the "Automations You Get" section above — offer scorer, list builder, cleaner, enrichment scraper, cold-email writer, 28 email frameworks, Lead Formatter prompt writer, bespoke personalisation pipeline, sequencer uploaders, pre-call brief, proposal generator, closing script, engagement agreement generator. Plus <strong>weekly coaching with Matt, direct DM access to Sean + Matt, every new agent we ship, and full ownership of every skill forever.</strong></div>
       </details>
 
       <details class="faq-item">
@@ -660,7 +712,7 @@
 
       <details class="faq-item">
         <summary>What if my cold email is already working?</summary>
-        <div class="faq-body">Then this is even more powerful. If cold email is producing meetings but the meetings are with $400-per-call clients, we're not adding volume — we're changing WHO you're pitching. Same operators, sharper positioning. The volume doesn't change, the deal size does.</div>
+        <div class="faq-body">Then this is even more powerful. If cold email is producing meetings but the meetings are with $400-per-call clients, we're not adding volume — we're changing WHO you're pitching. Same operators, sharper positioning. Volume doesn't change, deal size does.</div>
       </details>
 
       <details class="faq-item">
@@ -670,12 +722,12 @@
 
       <details class="faq-item">
         <summary>Do I actually own the AI agents when it's done?</summary>
-        <div class="faq-body">Yes. Every Claude skill, every prompt, every SOP, every proposal template, every agreement template — yours. Copy the folder to your machine. Use them forever, modify them, hand them to a hire, sell your agency with them inside. Not rented. Not licensed. Yours.</div>
+        <div class="faq-body">Yes. Every Claude skill, every prompt, every SOP, every proposal template, every agreement template — yours. Copy the folder to your machine. Use them forever, modify them, hand them to a hire, sell your agency with them inside. Not rented. Not licensed.</div>
       </details>
 
       <details class="faq-item">
         <summary>Is this done-for-you, coaching, or something else?</summary>
-        <div class="faq-body">Both — that's the point. The AI agents are done-for-you (we build, manage, and evolve them). The repositioning is coaching (weekly work with Matt on your specific context). Neither alone would work. Together they're the offer.</div>
+        <div class="faq-body">Both — that's the point. The AI agents are done-for-you (we build, manage, evolve them). The repositioning is coaching (weekly work with Matt on your specific context). Neither alone would work. Together they're the offer.</div>
       </details>
 
       <details class="faq-item">
@@ -685,14 +737,13 @@
 
       <details class="faq-item">
         <summary>Can you help me hire an operator or setter?</summary>
-        <div class="faq-body">Yes — with recommendations and screening frameworks. We help you place people, not place them for you. The reason: our members who tried "placed operators" from other programs got junior people who couldn't run the system. Ours works because you own the hiring bar. We help you get it right.</div>
+        <div class="faq-body">Yes — with recommendations and screening frameworks. We help you place people, not place them for you. Our members who tried "placed operators" from other programs got junior people who couldn't run the system. Ours works because you own the hiring bar. We help you get it right.</div>
       </details>
 
       <details class="faq-item">
         <summary>What if I want to pivot niches mid-program?</summary>
         <div class="faq-body">That's often what the repositioning IS. Every week's coaching includes pipeline review — if the niche isn't converting, we adjust the target market, the offer, or both. Repositioning IS the mechanism.</div>
       </details>
-
     </div>
 
     <div class="cta-row" style="margin-top: 48px;">
@@ -702,11 +753,8 @@
   </div>
 </section>
 
-<!-- Footer -->
 <footer>
-  <div class="container">
-    © 2026 Closing Clients System. All rights reserved.
-  </div>
+  <div class="container">© 2026 Closing Clients System. All rights reserved.</div>
 </footer>
 
 </body>
