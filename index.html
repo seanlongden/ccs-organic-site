@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Closing Clients System — Organic Offer Mockup</title>
+<style>
+  :root {
+    --accent: #7D83FF;
+    --accent-dark: #5A61E8;
+    --ink: #0B0F1A;
+    --ink-2: #2A2F3D;
+    --grey-1: #F5F6FA;
+    --grey-2: #E7E9F0;
+    --grey-3: #8B92A5;
+    --white: #FFFFFF;
+    --shadow: 0 1px 3px rgba(11,15,26,0.06), 0 8px 24px rgba(11,15,26,0.06);
+    --radius: 14px;
+    --max: 1120px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, sans-serif;
+    color: var(--ink);
+    background: var(--white);
+    line-height: 1.55;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .container { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+
+  /* Nav */
+  nav.top {
+    padding: 20px 0;
+    border-bottom: 1px solid var(--grey-2);
+  }
+  nav.top .row {
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .logo {
+    font-weight: 800; font-size: 18px; letter-spacing: -0.01em;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .logo-mark {
+    width: 32px; height: 32px; border-radius: 8px;
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+    display: inline-block;
+  }
+  .trustpilot {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 13px; color: var(--ink-2);
+    text-decoration: none;
+  }
+  .trustpilot .stars { color: #00b67a; font-weight: 700; }
+
+  /* Hero */
+  section.hero { padding: 72px 0 40px; text-align: center; }
+  .eyebrow {
+    display: inline-block;
+    padding: 6px 14px;
+    background: var(--grey-1);
+    color: var(--ink-2);
+    border-radius: 999px;
+    font-size: 13px; font-weight: 500;
+    margin-bottom: 24px;
+    border: 1px solid var(--grey-2);
+  }
+  h1 {
+    font-size: 48px; line-height: 1.08; letter-spacing: -0.02em;
+    font-weight: 800; color: var(--ink);
+    margin: 0 auto 20px; max-width: 900px;
+  }
+  h1 .highlight { color: var(--accent); }
+  .subhead {
+    font-size: 19px; line-height: 1.55;
+    color: var(--ink-2);
+    max-width: 720px; margin: 0 auto 32px;
+  }
+
+  /* CTA button */
+  .cta-btn {
+    display: inline-block;
+    background: var(--ink);
+    color: var(--white);
+    padding: 16px 28px;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 16px;
+    text-decoration: none;
+    transition: transform 0.15s, background 0.15s;
+    border: 0; cursor: pointer;
+  }
+  .cta-btn:hover { background: var(--accent-dark); transform: translateY(-1px); }
+  .cta-btn.large { padding: 20px 36px; font-size: 17px; }
+  .cta-note {
+    display: block;
+    margin-top: 12px;
+    font-size: 13px; color: var(--grey-3);
+  }
+
+  /* VSL slot */
+  .vsl-wrap {
+    max-width: 900px; margin: 40px auto;
+  }
+  .vsl-box {
+    position: relative;
+    padding-bottom: 56.25%;
+    background: var(--ink);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+  }
+  .vsl-placeholder {
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center; flex-direction: column;
+    color: var(--white); text-align: center; padding: 32px;
+    background: linear-gradient(135deg, #1a1e2e 0%, #0B0F1A 100%);
+  }
+  .vsl-placeholder .play {
+    width: 72px; height: 72px; border-radius: 50%;
+    background: var(--accent);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 16px;
+    font-size: 24px; color: white;
+  }
+  .vsl-placeholder .label { opacity: 0.6; font-size: 14px; margin-top: 8px; }
+  .vsl-placeholder .duration { position: absolute; bottom: 16px; right: 16px; background: rgba(0,0,0,0.6); padding: 4px 10px; border-radius: 4px; font-size: 12px; }
+
+  /* Section spacing */
+  section { padding: 72px 0; }
+  section.tight { padding: 40px 0; }
+  .section-eyebrow {
+    text-align: center;
+    color: var(--accent);
+    font-size: 13px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  h2 {
+    font-size: 36px; line-height: 1.15; letter-spacing: -0.02em;
+    font-weight: 800; color: var(--ink);
+    text-align: center; margin-bottom: 20px;
+    max-width: 820px; margin-left: auto; margin-right: auto;
+  }
+  h2 + p.section-sub {
+    text-align: center; max-width: 640px; margin: 0 auto 48px;
+    color: var(--ink-2); font-size: 17px;
+  }
+
+  /* "What this is" — three moves */
+  .three-moves {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    max-width: 1080px; margin: 0 auto;
+  }
+  .move-card {
+    background: var(--white);
+    border: 1px solid var(--grey-2);
+    border-radius: var(--radius);
+    padding: 32px 28px;
+    box-shadow: var(--shadow);
+  }
+  .move-num {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 42px; height: 42px; border-radius: 50%;
+    background: var(--accent); color: white;
+    font-weight: 800; font-size: 18px;
+    margin-bottom: 20px;
+  }
+  .move-card h3 {
+    font-size: 20px; font-weight: 700; letter-spacing: -0.01em;
+    margin-bottom: 12px;
+  }
+  .move-card p {
+    color: var(--ink-2); font-size: 15px; line-height: 1.6;
+  }
+  .move-card p strong { color: var(--ink); }
+
+  /* Deliverables — the automations grid */
+  section.deliverables { background: var(--grey-1); }
+  .cluster {
+    max-width: 1080px; margin: 0 auto;
+  }
+  .cluster + .cluster { margin-top: 40px; }
+  .cluster-head {
+    display: flex; align-items: baseline; gap: 12px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--grey-2);
+    padding-bottom: 16px;
+  }
+  .cluster-head h3 {
+    font-size: 22px; font-weight: 800; letter-spacing: -0.01em;
+  }
+  .cluster-hours {
+    color: var(--accent);
+    font-size: 14px; font-weight: 700;
+    background: rgba(125,131,255,0.1);
+    padding: 4px 10px;
+    border-radius: 6px;
+  }
+  .deliverable-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  .deliverable {
+    background: var(--white);
+    border: 1px solid var(--grey-2);
+    border-radius: 10px;
+    padding: 20px 22px;
+  }
+  .deliverable h4 {
+    font-size: 15px; font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 6px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .deliverable h4::before {
+    content: "";
+    display: inline-block; width: 6px; height: 6px;
+    background: var(--accent); border-radius: 50%;
+  }
+  .deliverable p {
+    color: var(--ink-2); font-size: 14px;
+  }
+  .deliverable .replaces {
+    display: block; margin-top: 8px;
+    font-size: 12px; color: var(--grey-3);
+    font-style: italic;
+  }
+
+  /* Testimonials */
+  .testimonial-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    max-width: 1080px; margin: 0 auto;
+  }
+  .testimonial-grid > :first-child, .testimonial-grid > :nth-child(2) {
+    grid-column: span 1;
+  }
+  .video-thumb {
+    position: relative;
+    padding-bottom: 56.25%;
+    background: linear-gradient(135deg, #1a1e2e 0%, #0B0F1A 100%);
+    border-radius: 10px; overflow: hidden;
+  }
+  .video-thumb .name {
+    position: absolute; bottom: 12px; left: 12px;
+    background: rgba(255,255,255,0.9); color: var(--ink);
+    padding: 4px 10px; border-radius: 6px;
+    font-size: 12px; font-weight: 700;
+  }
+  .video-thumb .play-icon {
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 52px; height: 52px; border-radius: 50%;
+    background: var(--white);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--ink); font-size: 20px;
+  }
+
+  /* Client wins gallery */
+  section.wins { background: var(--grey-1); }
+  .wins-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    max-width: 1080px; margin: 0 auto;
+  }
+  .win-card {
+    aspect-ratio: 1 / 1.15;
+    background: var(--white);
+    border-radius: 10px;
+    border: 1px solid var(--grey-2);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--grey-3); font-size: 11px; text-align: center; padding: 12px;
+  }
+
+  /* FAQ */
+  .faq { max-width: 780px; margin: 0 auto; }
+  .faq-item {
+    border-bottom: 1px solid var(--grey-2);
+  }
+  .faq-item summary {
+    padding: 22px 0; font-size: 17px; font-weight: 700;
+    cursor: pointer; list-style: none;
+    display: flex; justify-content: space-between; align-items: center;
+    color: var(--ink);
+  }
+  .faq-item summary::after {
+    content: "+";
+    font-size: 22px; color: var(--grey-3);
+    transition: transform 0.2s;
+  }
+  .faq-item[open] summary::after { content: "−"; }
+  .faq-item .faq-body {
+    padding: 0 0 22px;
+    color: var(--ink-2); font-size: 15px; line-height: 1.65;
+  }
+  .faq-item .faq-body strong { color: var(--ink); }
+
+  /* Footer */
+  footer {
+    padding: 40px 0 60px;
+    text-align: center;
+    color: var(--grey-3);
+    font-size: 13px;
+    border-top: 1px solid var(--grey-2);
+  }
+
+  /* Mid-page CTA rows */
+  .cta-row { text-align: center; padding: 20px 0; }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    h1 { font-size: 34px; }
+    h2 { font-size: 27px; }
+    section { padding: 48px 0; }
+    .three-moves { grid-template-columns: 1fr; }
+    .deliverable-grid { grid-template-columns: 1fr; }
+    .testimonial-grid { grid-template-columns: repeat(2, 1fr); }
+    .wins-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav class="top">
+  <div class="container">
+    <div class="row">
+      <div class="logo">
+        <span class="logo-mark"></span>
+        <span>Closing Clients System</span>
+      </div>
+      <a href="https://uk.trustpilot.com/review/closingclientsgroup.com" class="trustpilot" target="_blank" rel="noopener">
+        <span class="stars">★★★★★</span>
+        <span>4.9 on Trustpilot</span>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="container">
+    <span class="eyebrow">For lead-gen agency owners running cold email</span>
+    <h1>Take Fulfilment Off Your Plate. Reposition Into <span class="highlight">$8–15k Deals.</span><br>Guaranteed $50k In New Revenue Or You Don't Pay.</h1>
+    <p class="subhead">You're doing 6-10 sales calls a day for $400-per-meeting clients. Cold email got easy for anyone. The real skill now is picking niches where deals actually close and pricing at $8-15k upfront — and you can't fix that while you're the one running fulfilment.</p>
+  </div>
+
+  <!-- VSL slot -->
+  <div class="vsl-wrap container">
+    <div class="vsl-box">
+      <div class="vsl-placeholder">
+        <div class="play">▶</div>
+        <div><strong>[VSL video slot]</strong></div>
+        <div class="label">Sean walks through the offer + guarantee (record new)</div>
+        <div class="duration">~19 min</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cta-row">
+    <a href="https://calendly.com/seanlongden/closing-clients-system-call" class="cta-btn large">Apply To Get The Closing Clients System Installed</a>
+    <span class="cta-note">Application → qualification → call with Sean.</span>
+  </div>
+</section>
+
+<!-- What this is -->
+<section>
+  <div class="container">
+    <div class="section-eyebrow">What This Actually Is</div>
+    <h2>Three moves. One offer.</h2>
+    <p class="section-sub">You already know how to run cold email. The problem is that YOU are the system. Here's what we change.</p>
+
+    <div class="three-moves">
+      <div class="move-card">
+        <div class="move-num">1</div>
+        <h3>We automate your agency</h3>
+        <p><strong>AI agents run your acquisition and your fulfilment.</strong> Cold email copy, list building, campaign builds, reply management, sales-call prep, proposals, agreements. We manage the agents on your behalf. Not with a VA. Not with a hire that needs babysitting. AI that runs itself and gets audited by us every week.</p>
+      </div>
+      <div class="move-card">
+        <div class="move-num">2</div>
+        <h3>We help you sign better clients</h3>
+        <p><strong>You stop signing $400-per-meeting deals.</strong> You start signing $8-15k upfront in niches where deals actually close. Not through a course. Through weekly work with Matt on your specific offer, your specific pipeline, and your specific reposition. The mechanism is repositioning, not more volume.</p>
+      </div>
+      <div class="move-card">
+        <div class="move-num">3</div>
+        <h3>We guarantee the revenue</h3>
+        <p><strong>$50,000 in new revenue in 180 days minimum, or you don't pay.</strong> Not a client-count promise. A revenue floor, backed by the specific stipulations that make it defensible: 20%+ close rate on qualified calls you attend, $15k+ average client LTV, weekly optimisation calls with us. Miss the floor after you've done your part — full refund.</p>
+      </div>
+    </div>
+
+    <div class="cta-row" style="margin-top: 40px;">
+      <a href="https://calendly.com/seanlongden/closing-clients-system-call" class="cta-btn">Apply Now</a>
+    </div>
+  </div>
+</section>
+
+<!-- Deliverables — the automations grid -->
+<section class="deliverables">
+  <div class="container">
+    <div class="section-eyebrow">The Automations You Get</div>
+    <h2>Every hour of daily agency work — automated.</h2>
+    <p class="section-sub">Every deliverable below is an AI agent we run on your behalf. Point at each one. That's a task you stop doing.</p>
+
+    <!-- Cluster A: Offer + strategy -->
+    <div class="cluster">
+      <div class="cluster-head">
+        <h3>Offer + Strategy</h3>
+        <span class="cluster-hours">~4 hrs/week off your plate</span>
+      </div>
+      <div class="deliverable-grid">
+        <div class="deliverable">
+          <h4>Cold-traffic offer scorer</h4>
+          <p>Runs your offer through 4 tests, scores 0–16. If it fails 2, we stop and rewrite before you launch a doomed campaign.</p>
+          <span class="replaces">Replaces: hiring a strategist, guessing offer-market fit, wasted campaign launches.</span>
+        </div>
+        <div class="deliverable">
+          <h4>Positioning + market-map builder</h4>
+          <p>Enumerates niches where cold traffic converts, ranks them against your capacity, and hands back a shortlist with reasoning.</p>
+          <span class="replaces">Replaces: 3-6 hours of niche research + comparison per week.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cluster B: Lead lists -->
+    <div class="cluster">
+      <div class="cluster-head">
+        <h3>Lead Lists</h3>
+        <span class="cluster-hours">~6 hrs/week off your plate</span>
+      </div>
+      <div class="deliverable-grid">
+        <div class="deliverable">
+          <h4>ICP → ready-to-click search URL</h4>
+          <p>Describe your target in one sentence. Get back an AI-Ark search URL with every filter pre-set: title, industry, size, region, exclusions. 250+ title library, 12 vertical keyword libraries.</p>
+          <span class="replaces">Replaces: 2 hours of filter tuning per list build.</span>
+        </div>
+        <div class="deliverable">
+          <h4>CSV cleaner + validator</h4>
+          <p>Drops blank-email rows, renames columns to feed Lead Formatter, hands you a count summary ("976 in, 318 blank, 658 out").</p>
+          <span class="replaces">Replaces: manual Excel filtering, blank-row cleanup, column renaming.</span>
+        </div>
+        <div class="deliverable">
+          <h4>Website enrichment scraper</h4>
+          <p>Optional Jina scrape of each lead's website. Adds a full-context column ready for personalisation.</p>
+          <span class="replaces">Replaces: manual research per lead before personalisation.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cluster C: Writing -->
+    <div class="cluster">
+      <div class="cluster-head">
+        <h3>Writing Emails</h3>
+        <span class="cluster-hours">~10 hrs/week off your plate</span>
+      </div>
+      <div class="deliverable-grid">
+        <div class="deliverable">
+          <h4>Cold-email writer (voice-lifted)</h4>
+          <p>Writes cold emails from principles, not templates. Voice-lifted, situation-fitted, offer-aware.</p>
+          <span class="replaces">Replaces: writing every cold email yourself.</span>
+        </div>
+        <div class="deliverable">
+          <h4>28 tested email frameworks</h4>
+          <p>Extracted from 210 top-performing scripts. Each with spintax, best-fit scenario, and CTA library.</p>
+          <span class="replaces">Replaces: hunting for shape from scratch every time.</span>
+        </div>
+        <div class="deliverable">
+          <h4>Lead Formatter prompt writer</h4>
+          <p>Writes the 3 prompts you paste into Lead Formatter: qualification, company summary, personalised email. Uses your voice, your offer.</p>
+          <span class="replaces">Replaces: hours of prompt iteration per campaign.</span>
+        </div>
+        <div class="deliverable">
+          <h4>Firm-level bespoke personalisation</h4>
+          <p>Collapses your list from leads to companies (744 → 234), writes one custom email per company at ~$0.30 each. Includes triage, collision check, batch build.</p>
+          <span class="replaces">Replaces: 200+ hours per campaign if done manually.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cluster D: Sequencer -->
+    <div class="cluster">
+      <div class="cluster-head">
+        <h3>Campaign Build + Deploy</h3>
+        <span class="cluster-hours">~3 hrs/week off your plate</span>
+      </div>
+      <div class="deliverable-grid">
+        <div class="deliverable">
+          <h4>Sequencer uploader (PlusVibe / SmartLead / Email Bison)</h4>
+          <p>Builds the campaign, handles A/B variants + spintax, pushes to your sequencer via API. Never activates the campaign — you approve, you launch.</p>
+          <span class="replaces">Replaces: 2-3 hours of copy-paste per campaign upload.</span>
+        </div>
+        <div class="deliverable">
+          <h4>Sneak-peek lead-magnet builder</h4>
+          <p>From just a client URL: full research, fit check, 2-3 lead-magnet ideas, ChatGPT image prompt, 3-email sequence — the full first-touch package.</p>
+          <span class="replaces">Replaces: manually building bespoke lead magnets per client.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cluster E: Sales lane -->
+    <div class="cluster">
+      <div class="cluster-head">
+        <h3>Sales Prep + Close</h3>
+        <span class="cluster-hours">~12 hrs/week off your plate</span>
+      </div>
+      <div class="deliverable-grid">
+        <div class="deliverable">
+          <h4>Pre-call brief generator</h4>
+          <p>Before every sales call: business snapshot, 5-7 discovery questions, terminology cheat sheet. Ready in 60 seconds instead of 30 minutes.</p>
+          <span class="replaces">Replaces: 30+ min of prospect research per call.</span>
+        </div>
+        <div class="deliverable">
+          <h4>Proposal generator (HTML → PDF)</h4>
+          <p>Full sales proposal after every discovery call. HTML template, print-to-PDF, uses your pricing and deal shape.</p>
+          <span class="replaces">Replaces: writing proposals from scratch every time.</span>
+        </div>
+        <div class="deliverable">
+          <h4>Pre-call-2 prep + closing script</h4>
+          <p>Anticipated questions, execution talking points, closing sequence. Ready before your second call.</p>
+          <span class="replaces">Replaces: prep anxiety, showing up unprepared, losing deals.</span>
+        </div>
+        <div class="deliverable">
+          <h4>10-clause engagement agreement</h4>
+          <p>Signed agreement matching your pricing model — flat retainer, tech-fee + performance, upfront + backend. Sends the second they say yes.</p>
+          <span class="replaces">Replaces: template hunting, drafting, sending.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cluster F: Ongoing -->
+    <div class="cluster">
+      <div class="cluster-head">
+        <h3>Ongoing + Reposition Work</h3>
+        <span class="cluster-hours">Where the repositioning happens</span>
+      </div>
+      <div class="deliverable-grid">
+        <div class="deliverable">
+          <h4>Weekly coaching call with Matt</h4>
+          <p>Live troubleshooting on your specific offer, pipeline, clients, and repositioning. Every week. Recorded.</p>
+          <span class="replaces">Replaces: hiring a $10k/mo consultant. Or figuring it out alone.</span>
+        </div>
+        <div class="deliverable">
+          <h4>Direct access to Sean + Matt</h4>
+          <p>Loom + DM. Not a ticket queue. Not a shared inbox. Direct to the people who built this.</p>
+          <span class="replaces">Replaces: waiting 3 days for coach responses in other programs.</span>
+        </div>
+        <div class="deliverable">
+          <h4>Every new AI agent we ship — free</h4>
+          <p>We ship new automations monthly as the tech evolves. You get every one added to your system.</p>
+          <span class="replaces">Replaces: paying to upgrade + re-buy every 6 months.</span>
+        </div>
+        <div class="deliverable">
+          <h4>You own every skill forever</h4>
+          <p>The Claude skills, prompts, SOPs, agreements, proposals — all yours. Not rented. Not licensed. Yours after you leave, if you leave.</p>
+          <span class="replaces">Replaces: vendor lock-in. Rented software. Fear of being cut off.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="cta-row" style="margin-top: 48px;">
+      <a href="https://calendly.com/seanlongden/closing-clients-system-call" class="cta-btn large">Apply To Get This Installed</a>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section>
+  <div class="container">
+    <div class="section-eyebrow">Real Members</div>
+    <h2>Hear from the operators running it right now.</h2>
+    <div class="testimonial-grid">
+      <div class="video-thumb">
+        <div class="play-icon">▶</div>
+        <div class="name">Kevin</div>
+      </div>
+      <div class="video-thumb">
+        <div class="play-icon">▶</div>
+        <div class="name">Matt Lucero</div>
+      </div>
+      <div class="video-thumb">
+        <div class="play-icon">▶</div>
+        <div class="name">Kristian</div>
+      </div>
+      <div class="video-thumb">
+        <div class="play-icon">▶</div>
+        <div class="name">Martin</div>
+      </div>
+      <div class="video-thumb">
+        <div class="play-icon">▶</div>
+        <div class="name">Konrad</div>
+      </div>
+      <div class="video-thumb">
+        <div class="play-icon">▶</div>
+        <div class="name">+ new testimonial slot</div>
+      </div>
+    </div>
+    <div class="cta-row" style="margin-top: 40px;">
+      <a href="https://calendly.com/seanlongden/closing-clients-system-call" class="cta-btn">Book A Call Now</a>
+    </div>
+  </div>
+</section>
+
+<!-- Client wins gallery -->
+<section class="wins">
+  <div class="container">
+    <div class="section-eyebrow">Client Wins</div>
+    <h2>Screenshots from members shipping right now.</h2>
+    <p class="section-sub">Every screenshot below is a real win from a real CCS member. Curated for lead-gen agency wins — the ones that match where you're at.</p>
+    <div class="wins-grid">
+      <!-- Placeholder 20 grid — real gallery pulls from Supabase like current site -->
+      <div class="win-card">Screenshot 1</div>
+      <div class="win-card">Screenshot 2</div>
+      <div class="win-card">Screenshot 3</div>
+      <div class="win-card">Screenshot 4</div>
+      <div class="win-card">Screenshot 5</div>
+      <div class="win-card">Screenshot 6</div>
+      <div class="win-card">Screenshot 7</div>
+      <div class="win-card">Screenshot 8</div>
+      <div class="win-card">Screenshot 9</div>
+      <div class="win-card">Screenshot 10</div>
+      <div class="win-card">Screenshot 11</div>
+      <div class="win-card">Screenshot 12</div>
+      <div class="win-card">Screenshot 13</div>
+      <div class="win-card">Screenshot 14</div>
+      <div class="win-card">Screenshot 15</div>
+      <div class="win-card">Screenshot 16</div>
+      <div class="win-card">Screenshot 17</div>
+      <div class="win-card">Screenshot 18</div>
+      <div class="win-card">Screenshot 19</div>
+      <div class="win-card">Screenshot 20</div>
+    </div>
+    <div class="cta-row" style="margin-top: 40px;">
+      <a href="https://calendly.com/seanlongden/closing-clients-system-call" class="cta-btn">See If I Qualify</a>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section>
+  <div class="container">
+    <div class="section-eyebrow">FAQ</div>
+    <h2>Answers before you apply.</h2>
+    <div class="faq">
+
+      <details class="faq-item">
+        <summary>What does it actually cost?</summary>
+        <div class="faq-body">Discussed on the qualification call. Priced against the deal-size lift we're targeting, not by a fixed number that ignores your context. If we don't think we can 5x the investment inside 180 days, we don't take you on.</div>
+      </details>
+
+      <details class="faq-item">
+        <summary>What's included, specifically?</summary>
+        <div class="faq-body">All AI agents listed in the "Automations You Get" section above — offer scorer, list builder, cleaner, enrichment scraper, cold-email writer, 28 email frameworks, Lead Formatter prompt writer, bespoke personalisation pipeline, sequencer uploaders, pre-call brief, proposal generator, closing script, engagement agreement generator. Plus <strong>weekly coaching with Matt, direct DM access to Sean + Matt, every new agent we ship, and full ownership of every skill forever.</strong></div>
+      </details>
+
+      <details class="faq-item">
+        <summary>How does the $50k guarantee actually work?</summary>
+        <div class="faq-body"><strong>$50,000 in new revenue within 180 days minimum, or you get a full refund.</strong> Stipulations you must hit for the guarantee to apply: (1) maintain a 20%+ close rate on qualified calls we book you, (2) average client LTV of $15k+, (3) attend the weekly optimisation call. These aren't hoops — they're the specific things the buyer must do for the mechanism to work. If you do your part and we miss the floor, we refund everything.</div>
+      </details>
+
+      <details class="faq-item">
+        <summary>What if my cold email is already working?</summary>
+        <div class="faq-body">Then this is even more powerful. If cold email is producing meetings but the meetings are with $400-per-call clients, we're not adding volume — we're changing WHO you're pitching. Same operators, sharper positioning. The volume doesn't change, the deal size does.</div>
+      </details>
+
+      <details class="faq-item">
+        <summary>What if I've never run cold email?</summary>
+        <div class="faq-body">Then this isn't for you yet. We're built for lead-gen agency owners who already run cold email and are stuck operating it themselves. If you're pre-cold-email, you need a course first — this isn't that.</div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Do I actually own the AI agents when it's done?</summary>
+        <div class="faq-body">Yes. Every Claude skill, every prompt, every SOP, every proposal template, every agreement template — yours. Copy the folder to your machine. Use them forever, modify them, hand them to a hire, sell your agency with them inside. Not rented. Not licensed. Yours.</div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Is this done-for-you, coaching, or something else?</summary>
+        <div class="faq-body">Both — that's the point. The AI agents are done-for-you (we build, manage, and evolve them). The repositioning is coaching (weekly work with Matt on your specific context). Neither alone would work. Together they're the offer.</div>
+      </details>
+
+      <details class="faq-item">
+        <summary>What do the first 30 / 60 / 90 days look like?</summary>
+        <div class="faq-body"><strong>Days 0-30:</strong> AI agents installed on your infrastructure, offer scored + rewritten, first campaigns spec'd against the reposition. <strong>Days 30-60:</strong> new campaigns running, weekly coaching, first higher-tier deals in the pipeline. <strong>Days 60-90:</strong> full agent stack running acquisition and fulfilment, you're touching campaigns only for exceptions, first repositioned deals closing. <strong>90-180 days:</strong> pipeline compounds, revenue floor hits, you decide whether to scale headcount or hold.</div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Can you help me hire an operator or setter?</summary>
+        <div class="faq-body">Yes — with recommendations and screening frameworks. We help you place people, not place them for you. The reason: our members who tried "placed operators" from other programs got junior people who couldn't run the system. Ours works because you own the hiring bar. We help you get it right.</div>
+      </details>
+
+      <details class="faq-item">
+        <summary>What if I want to pivot niches mid-program?</summary>
+        <div class="faq-body">That's often what the repositioning IS. Every week's coaching includes pipeline review — if the niche isn't converting, we adjust the target market, the offer, or both. Repositioning IS the mechanism.</div>
+      </details>
+
+    </div>
+
+    <div class="cta-row" style="margin-top: 48px;">
+      <a href="https://calendly.com/seanlongden/closing-clients-system-call" class="cta-btn large">Apply To Get The Closing Clients System Installed</a>
+      <span class="cta-note">Application → qualification → call with Sean.</span>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    © 2026 Closing Clients System. All rights reserved.
+  </div>
+</footer>
+
+</body>
+</html>
