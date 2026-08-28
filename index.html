@@ -35,33 +35,10 @@
 
   /* Nav */
   nav.top {
-    padding: 16px 0;
-    border-bottom: 1px solid var(--grey-2);
-    background: rgba(255,255,255,0.95);
-    backdrop-filter: blur(8px);
-    position: sticky; top: 0; z-index: 50;
+    padding: 20px 0;
+    text-align: center;
   }
-  nav.top .row {
-    display: flex; align-items: center; justify-content: space-between;
-    gap: 16px;
-  }
-  .nav-logo { height: 72px; width: auto; display: block; }
-  .mp-item {
-    display: flex; align-items: center; gap: 10px;
-    text-decoration: none; color: var(--ink);
-    flex-shrink: 0;
-  }
-  .mp-stars { display: flex; gap: 2px; }
-  .mp-star-box {
-    background: #00B67A;
-    width: 24px; height: 24px;
-    display: flex; align-items: center; justify-content: center;
-    border-radius: 3px;
-  }
-  .mp-star { color: white; font-size: 16px; line-height: 1; }
-  .mp-label { font-size: 14px; color: var(--ink-2); font-weight: 500; }
-  .mp-label strong { color: var(--ink); font-weight: 800; font-size: 16px; }
-  .mp-item:hover .mp-label { color: var(--ink); }
+  .nav-logo { height: 72px; width: auto; display: inline-block; }
 
   /* Hero */
   section.hero { padding: 64px 0 32px; text-align: center; }
@@ -348,10 +325,6 @@
     .container { padding: 0 18px; }
     nav.top { padding: 12px 0; }
     .nav-logo { height: 52px; }
-    .mp-star-box { width: 20px; height: 20px; }
-    .mp-star { font-size: 13px; }
-    .mp-label { font-size: 12px; }
-    .mp-label strong { font-size: 13px; }
     section { padding: 44px 0; }
     section.hero { padding: 36px 0 20px; }
     h1 { font-size: 30px; line-height: 1.12; margin-bottom: 16px; }
@@ -436,23 +409,7 @@
 
 <!-- Nav -->
 <nav class="top">
-  <div class="container">
-    <div class="row">
-      <a href="/" style="display:block;">
-        <img src="/logo.png" alt="Closing Clients System" class="nav-logo">
-      </a>
-      <a href="https://uk.trustpilot.com/review/closingclientsgroup.com" class="mp-item" target="_blank" rel="noopener">
-        <span class="mp-stars">
-          <span class="mp-star-box"><span class="mp-star">★</span></span>
-          <span class="mp-star-box"><span class="mp-star">★</span></span>
-          <span class="mp-star-box"><span class="mp-star">★</span></span>
-          <span class="mp-star-box"><span class="mp-star">★</span></span>
-          <span class="mp-star-box"><span class="mp-star">★</span></span>
-        </span>
-        <span class="mp-label"><strong>4.8</strong> on Trustpilot · 51 reviews</span>
-      </a>
-    </div>
-  </div>
+  <img src="/logo.png" alt="Closing Clients System" class="nav-logo">
 </nav>
 
 <!-- Hero -->
